@@ -1,0 +1,17 @@
+---
+- name: Install and start nginx on dbserver
+  hosts: dbserver
+  become: true
+  tasks:
+
+    - name: Install nginx
+      yum:
+        name: nginx
+        state: present
+
+    - name: Start and enable nginx service
+      systemd:
+        name: nginx
+        state: started
+        enabled: true
+
